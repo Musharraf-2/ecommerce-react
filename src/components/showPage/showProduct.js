@@ -6,7 +6,7 @@ import { Comment } from './comment';
 
 function ShowProduct() {
   const params = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     getProduct(params.id).then((res) => {
@@ -39,7 +39,7 @@ function ShowProduct() {
             })}
           </div>
         </div>
-        : null
+        : <h2 className='text-center'>The record you are asking does not exist.</h2>
       }
     </div>
   );
