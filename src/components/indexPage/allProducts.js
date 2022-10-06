@@ -1,23 +1,14 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { getProducts } from '../api/productApi';
 import { ProductCard } from './productCard';
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
-    getProducts();
+    getProducts().then(res => {
+      setProducts(res.data)
+    })
   }, []);
-
-  const getProducts = () => {
-    axios.get('http://localhost:3000/api/v1/products.json')
-      .then(resp => {
-        setProducts(resp.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
 
   return (
     <div className="container">
