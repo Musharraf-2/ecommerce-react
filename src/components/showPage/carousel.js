@@ -1,7 +1,7 @@
 import './style/carousel.css'
 
-function Carousel(props) {
-  return (<div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+const Carousel = (props) => (
+  <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
     <div className="carousel-inner text-center h-50">
       <div className="carousel-item active">
         <img src={props.images_path[0].image_path} alt="Product" className="d-block w-100 c-image" />
@@ -20,7 +20,6 @@ function Carousel(props) {
       <span className="carousel-control-next-icon" aria-hidden="true"></span>
       <span className="visually-hidden">Next</span>
     </button>
-  </div>);
-}
+  </div>)
 
 export { Carousel };
