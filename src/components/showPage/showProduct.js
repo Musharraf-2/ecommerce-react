@@ -7,16 +7,18 @@ import { Comment } from './comment';
 function ShowProduct() {
   const params = useParams();
   const [product, setProduct] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     getProduct(params.id).then((res) => {
       setProduct(res.data.product)
+      setIsLoaded(true)
     })
   }, [params.id]);
 
   return (
     <div className="container mt-5">
-      {product ?
+      {!isLoaded ? <h4 className='text-center'>Loading...</h4> :
         <div>
           <h1 className="text-center">{product.title}</h1>
           <strong>Description: </strong>{product.description}<br />
@@ -39,7 +41,6 @@ function ShowProduct() {
             })}
           </div>
         </div>
-        : <h2 className='text-center'>The record you are asking does not exist.</h2>
       }
     </div>
   );
