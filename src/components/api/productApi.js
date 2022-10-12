@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3000/api/v1/products'
+const baseUrl = process.env.REACT_APP_ECOMMERCE_BASE_URL;
 
 export const getProducts = async () => {
   return await axios.get(`${baseUrl}.json`)

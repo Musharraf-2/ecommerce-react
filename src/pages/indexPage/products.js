@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../api/productApi';
-import { ProductCard } from './productCard';
+import { getProducts } from '../../components/api/productApi';
+import { ProductCard } from '../../components/product/productCard';
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -11,6 +11,9 @@ function AllProducts() {
       setProducts(res.data)
       setIsLoaded(true)
     })
+      .catch((error) => {
+        console.log(error.message);
+      })
   }, []);
 
   return (

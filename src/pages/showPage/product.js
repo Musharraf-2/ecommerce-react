@@ -1,8 +1,8 @@
-import { getProduct } from '../api/productApi';
-import { Carousel } from './carousel';
+import { getProduct } from '../../components/api/productApi';
+import { Carousel } from '../../components/product/carousel';
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import { Comment } from './comment';
+import { Comment } from '../../components/product/comment';
 
 function ShowProduct() {
   const params = useParams();
@@ -13,7 +13,11 @@ function ShowProduct() {
     getProduct(params.id).then((res) => {
       setProduct(res.data.product)
       setIsLoaded(true)
+
     })
+      .catch((error) => {
+        console.log(error.message);
+      })
   }, [params.id]);
 
   return (
